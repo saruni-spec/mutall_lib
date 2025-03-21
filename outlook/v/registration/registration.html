@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration</title>
+        <link href="../../../outlook//v/zone/zone.css" rel="stylesheet">
+        <link href="registration.css" rel="stylesheet">
+        
+        <script type="module">
+            //
+            //Access the registration module
+            import {registration} from "./registration.js";
+            //
+            //Create an instance of the class
+            const register = new registration();
+            //
+            //Make the instance available
+            window.register = register;
+        </script>
+    </head>
+    <body>
+        <p>(Please fill out all fields..)</p>
+        <!--
+        The form is useful for performing the initial checks on inputs after
+        submission. For example, all required fields are checked for completeness
+        -->
+        <form id="login_form">
+            
+            <label id="username" data-required="true" data-iotype="text">
+                Username: <input type="text" value="muraya"/> 
+                <span class="required">*</span>
+                <span class="error"></span>
+            </label>
+            
+            <label id="password" data-required="true" data-iotype="text">
+                Password: <input type="password" value="muraya"/>
+                <span class="required">*</span>
+                <span class="error"></span>
+            </label>
+            
+            <label>
+                <input type="checkbox" id="show_password">Show password
+            </label>
+            
+            <fieldset data-field="operation" data-iotype="radios" data-required="true">
+                <legend >What do you want to do?<span class="required"> * </span></legend>
+                
+                <label>
+                    <input type="radio" value="in" name="operation" checked> Sign In as Member
+                </label>
+                
+                <label>
+                    <input type="radio" value ="up" name="operation"> Sign Up to be Member
+                </label>
+
+                
+                 <label>
+                    <input type="radio" value="forgot" name="operation"> forgot password
+                </label>
+                <span class="error"></span>
+            </fieldset>
+            
+            <!-- Report sign in errors here -->
+            <p id="report">
+                <span class="error" ></span>
+            </p>
+            
+            <div class="buttons">
+                <button id="submit">Submit</button>
+                <button id="cancel">Cancel</button>
+            </div>
+        </form>
+    </body>
+</html>

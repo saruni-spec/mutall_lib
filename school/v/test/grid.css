@@ -1,0 +1,98 @@
+body,html{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* 
+  The entire school page styling  */
+body{
+  background-color: rgb(182, 246, 229);
+ overflow: hidden;
+}
+/* 
+  Sizing the elements in the container */
+.container {
+
+  height: 100%;
+  width: 100%;
+  display: grid;
+  
+/*
+
+  Sections on the web page  */
+grid-template-areas:  'school class student student'
+                      'stream year student student';
+/*
+  The spacing between the grid areas  */
+  gap: 15px;
+
+grid-template-rows: 50% 50%;
+grid-template-columns: 25% 25% 25% 25%;  
+overflow: hidden;
+}
+/* 
+  styling for the school panel in the school page */
+ #school_panel{
+  grid-area: school;
+  background-color: rgb(242, 244, 248);
+  overflow: auto;
+
+ }
+ /*
+  styling the stream panel in the school page */
+ #stream{
+  grid-area: stream;
+  background-color: rgba(248, 253, 240, 0.172);
+  overflow: auto;
+  
+ }
+ /* 
+  Styling the class panel in the school page*/
+ #class_{
+  grid-area: class;
+  background-color: rgb(230, 238, 236);
+  overflow: auto;
+
+  
+ }
+ /*
+  Styling the year panel inthe school page  */
+ #year{
+  grid-area: year;
+  background-color: rgba(221, 236, 229, 0.952);
+  overflow: auto;
+  
+ }
+ /*
+  Styling student panel in the school page  */
+ #student {
+  grid-area: student;
+  overflow: auto;
+  background-color: rgb(237, 251, 253);
+ } 
+
+
+
+/*
+  Freezing headers of the entire school page 'panels' */
+table tbody tr:first-child  { 
+  position: sticky;
+/* 
+  Adjust this value based on where you want it to stick */
+  top: 0; 
+
+/* 
+  Optional: ensures it stays above other content  minimizes distraction */
+   z-index: 1;  
+ }
+ /*
+  Sticky positioning for the first column for the year panel */
+ #year table tbody tr td:nth-child(2) {
+    position: sticky;
+
+    left: 0;
+
+    /* Ensure it stays above other content */
+     z-index: 1; 
+ }

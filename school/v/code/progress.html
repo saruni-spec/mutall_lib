@@ -1,0 +1,38 @@
+<!--The progress of students web page  -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>students progress</title>
+    <head>
+
+        <!--body styling of the progress webpage  -->
+        <link rel="stylesheet" href="progress.css">
+
+        <!-- tabulation styling for the progress web page -->
+        <link rel="stylesheet" href="progresss.css">
+
+    <!--Where the script is -->
+        <script type="module"> 
+            //
+            //Getting the progress class from progress.ts module.
+            import {progress} from "./progress.js"
+            //
+            //After the page loads execute this.
+            window.onload=async()=> {
+                //
+                //Create an object of the progress class.
+                const my_progress = new progress();
+                //
+                //Showing the tabulation for progress.
+                await my_progress.show();
+                //
+                // global variable so that it accesible on the html 
+                window.progress = my_progress; 
+            };
+        </script>
+      </head>
+</head>
+<body>
+</body>
+</html>
+

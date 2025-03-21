@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Editable SVG Text</title>
+    </head>
+    <body>
+        <svg width="600" height="400" viewBox="0 0 500 100" style="border: 2px solid black">
+            <text id="editableText" x="50" y="50" font-family="Arial" font-size="20" fill="black">
+                This text is editable.
+            </text>
+        </svg>
+
+        <script>
+            //
+            //Get the text element within the svg viewbox
+            const editable = document.getElementById('editableText');
+            //
+            //Since you cannot directly render html elements within an svg viewbox. The foreign objec
+            //makes provision for display of html elements
+            const foreign = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
+            //
+            //Set foreignObject attributes that is adjust x, y, width, height
+            //
+            //X
+            foreign.setAttribute('x', editable.getAttribute('x'));
+            //
+            //y
+            foreign.setAttribute('y', editable.getAttribute('y'));
+            //
+            //width
+            foreign.setAttribute('width', editable.getBBox().width);
+            //
+            //height
+            foreign.setAttribute('height', editable.getBBox().height);
+            //
+            //Create the element that will hellp in collection of user input
+            const input = document.createElement('input');
+            //
+            //Adjust the type of input
+            input.type = 'text';
+            //
+            //Ensure the text in the editable text elemnt matches what the input has
+            input.value = editable.textContent;
+            //
+            //Add the input to the foreign object
+            foreign.appendChild(input);
+            //
+            //Append the foreignObject to the SVG, but initially hide it
+            foreign.style.display = 'none';
+            editable.parentNode.appendChild(foreign);
+            //
+            //Add alistener to enable edit mode for the text element once it is clicked
+            editable.addEventListener('click', () => {
+                //
+                // Toggle visibility
+                editable.style.display = editable.style.display === 'none' ? 'block' : 'none';
+                //
+                foreign.style.display = foreign.style.display === 'none' ? 'block' : 'none';
+                //
+                // If the foreignObject is now visible, focus the input
+                if (foreign.style.display === 'block') input.focus();
+            });
+            //
+            // Handle input blur event to update the text and hide the foreignObject
+            input.addEventListener('blur', () => {
+                //
+                //Update the text element with whatever was entered by the user
+                editable.textContent = input.value;
+                //
+                //Show the text element
+                editable.style.display = 'block';
+                //
+                //Hide the input element
+                foreign.style.display = 'none';
+            });
+        </script>
+    </body>
+</html>

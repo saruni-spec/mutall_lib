@@ -1,0 +1,98 @@
+/*
+Show the table borders*/
+td{
+    /*
+    The following 3 properties have to be set for a cell border to show*/
+    border:solid 1px  rgba(144, 214, 173, 0.964);
+    /*
+    ??*/
+    padding-right: 25px;
+    /*
+    For fixed cell with to take effect...*/
+    /* 
+    ...prevent content overflow to the next cell */
+    overflow: hidden;
+    /* 
+    ..prevent line breaks, i.e., wrapping. This is important for limiting the
+    cell height. Is this desirable? */
+    white-space: nowrap; 
+    /* 
+    Add ellipsis for overflowing text to alert the user of the text truncation */
+    text-overflow: ellipsis; 
+}
+
+table{
+    /*
+    Collapse the borders of a table that are double lines*/
+    border-collapse: collapse;
+    /* 
+    Show the table with fixed cell sizes */
+    table-layout: auto;
+    /*
+    The table's with has to be defined for the fized layout to take effect */ 
+    width: 100%; 
+}
+
+/*
+Mark selected td and tr with different color*/
+td.selected {
+    background-color: lightblue;
+}
+tr.selected{
+    background-color:lightgoldenrodyellow;
+}
+
+/*Hide the the edit elements in normal mode*/
+td .edit{
+    display:none;
+}
+
+/* Hide the normal element and show the edit version in all applicable cases */
+td.updateable .normal,
+td.current .normal,
+td.open .normal {
+    display: none;
+}
+td.updateable .edit,
+td.current .edit,
+td.open .edit {
+    display: inline;
+}
+
+/*
+Labels should be separated by a right border margin of 1 em*/
+label{
+    margin-right: 1em;
+}
+/*
+All errors will be shown in red*/
+.error{
+    color: red;
+}
+
+/*
+Margin homozones are shown in light green*/
+.margin{
+    background-color: lightgreen;
+}
+
+/*
+Text in all dialogs should be left justfied*/
+dialog{
+    text-align: left;
+}
+
+/*
+Panel headers (and lefties) are should be frozen*/
+.header{
+    /*
+    Freeze the header at the top of the view port*/
+    position:sticky;
+    top:0
+}
+.footer{
+    /*
+    Freeze the footer at the botom of the view port*/
+    position:sticky;
+    bottom:0
+}

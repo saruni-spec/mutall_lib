@@ -1,0 +1,12 @@
+{
+  "extends": "../../../schema/v/code/tsconfig.json",
+  "compilerOptions": {
+   },
+   "exclude": [
+    "zone copy.ts",
+    "zone copy 2.ts",
+    "zone copy 3.ts",
+    "zone copy 4.ts",
+    "zone copy 5.ts"    
+  ]
+}

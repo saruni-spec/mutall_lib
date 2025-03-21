@@ -1,0 +1,165 @@
+<!--
+The series of demos to be shown using this template were designed to help in the 
+top/down refinement of the zone model-->
+<html>
+    <head>
+        <title>Sample Tests</title>
+        <link rel="stylesheet" href="../zone/zone.css">
+        <link rel="stylesheet" href="./sample.css">
+        
+        <script type="module">
+            //
+            //Shows no table.
+            //This test is for checking my development environment
+            //Concepts
+            // - homozone
+            // - driver_source/empty
+            //import * as sample from "./no_table.js";
+            //
+            //Testing with the smallest amount of input data is useful for 
+            //checking whether the development environment is setup correctly or
+            // not as well as demonstrtaing how to separate a driver source from
+            //the table structure.
+            //Concepts
+            // - homozone
+            // - basic_value
+            // - driver_source/scalar
+            //import * as sample from "./scalar.js";
+            //
+            //Tabulating a simple array, a.k.a., column vector
+            //Concepts
+            //- driver_source/array
+            //import * as sample from './array.js';
+            //
+            //Transposing a column vector to a row vector
+            //Concepts
+            //- transpose
+            //import * as sample from "./transpose.js";
+            //
+            //Tabulating the well known 2-dimensional matrix
+            //Concepts
+            // - driver_source/matrix
+            //import * as sample from "./matrix.js";
+            //
+            //Higher rank tensors
+            //
+            //Use case: Adding a column header to the 2-d matrix
+            //Heterozone: A zone of other zones (rather than basic values)
+            //Concepts
+            //- heterozone
+            //- layout
+            //import * as sample from "./heterozone.js";
+            //
+            //Use case: adding a row label to the 2-d matrix
+            //Concepts
+            //- balanced a layout (achieved with a glade)
+            //import * as sample from "./labeled_matrix.js";
+            //
+            //Transposing a heterozone all at once (instead of homozone by homozpne). 
+            //(This needs further re-think
+            //so that transpositions at higher levels can be taken into account.
+            //For instance if transpose:true and transpose:true occurs in the 
+            //hierarchy, then the overall effect on a transpose is nullified)
+            //import * as sample from "./labeled_matrix_transposed.js";
+            //
+            //NB. In all previous examples, data access is via (implied) numeric
+            //indices
+            //Use case: 
+            //Data are explicity indexed using string keys, 
+            //unlike a scalar, vector or matrix where the indices are 
+            //implied numerics
+            //  
+            //Concepts:
+            //-driver_source/obj<basic_value>
+            //import * as sample from "./object_driver_source.js";
+            //
+            //Use case:When you have some data (or none at all)
+            //Demonstrate source of axes (by re-writing labeled_matrix)
+            //Concepts
+            //-axis_source
+            //import * as sample from "./axis_source.js";
+            //
+            //Use case: Margin placement made easy.
+            //Demonstrate a fully labeled matrix using the header and leftie
+            //zones
+            //Concepts
+            // - driver_source/driver_axis
+            // - get_leftie() method
+            // - get_header() method
+            //import * as sample from "./header_leftie2.js";
+            //
+            //Transposinh heyerosones and margins
+            //import * as sample from "./header_leftie_transpose.js";
+            //
+            //Use case: data coming from a database query
+            //Concepts:
+            // - driver_source/sql
+            // - modifiying data
+            import * as sample from "./sql_fuel.js";
+            //
+            //Use case:Adding 
+            //-margin zones for annotations 
+            //-hidden end_date columns even though it is drawn
+            //import * as sample from "./sql_fuel_add.js";
+            //
+            //Use case:cross-tabulation
+            //Showing school exam percentage scores (without headers)
+            //Concepts
+            // - driver_source/'sql.long'
+            //import * as sample from "./sql_long.js";
+                    //
+                    //Use case:Showing school exam percentage scores with headers
+                    //Concepts:
+                    // - extending heterozone
+                    //Open extension.php in Browser
+                    //
+                    //Use case:Tabulating a database entity. This could be useful for 
+                    //metavisuo
+                    //Concepts:
+                    // - driver_source/ename
+                    //import * as sample from "./entity.js";
+                    //
+                    //Run the following standalone systems for more advanced demos
+                    //vtitles.html, workplan.html, exam.html
+            //
+            //Use case:modifying results of tabulation
+            //Concepts:
+            //-Proper choice of axis is important for writing
+            //import * as sample from "./axis_choices.js";
+            //
+            /*
+            Use case:Modifying exam scores
+            Concepts
+                - overlaying a homozone 'on top of another'
+                - traversing homozones in a heterozone to search for primary key label for scores
+                - reading sql from external file
+                = Immediately Invoked Function Expression(IIFE)
+            */ 
+            //import * as sample from "./traverse.js";
+            /*
+            Use case:Hiding homozones that need not be seen
+            Concepts
+                - options/hidden
+            */ 
+            //import * as sample from "./traverse_hide.js";
+            //
+                /*
+                Use case:Editing data of complex tables: Creating new exam results
+                (without attempt to hide anything)
+                Concepts
+                    - left joins
+                    - whole axis hiding
+                    - missing data sources in a heterozone???                
+                */
+                //import * as sample from "./newexam_nohide.js";
+                /*
+                Use case:Editing data of complex tables: Creating new exam results
+                Concepts
+                    - tick hiding
+                */
+                //import * as sample from "./newexam.js";
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,355 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="sitting.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="class">
+            classes
+        </div>
+        <div id="candidate">
+            candidates and subjects
+        </div>
+         <div id="candidate">
+            subjects
+        <!--keeping track whatever is being saved on the datatbase -->
+        <!-- <button>submit</button> -->
+        </div> 
+        
+    </body>
+</html>
+<!-- log in details for the teacher conducting the examination+ -->
+
+
+<!-- mock up of sitting ..pure html wiwth a bit of java script ?? --> 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Registration System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .panel {
+            padding: 20px;
+            box-sizing: border-box;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .left-panel {
+            width: 50%;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+        }
+        .right-panel {
+            width: 50%;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .class-list {
+            list-style: none;
+            padding: 0;
+        }
+        .class-item {
+            margin-bottom: 10px;
+            padding: 15px;
+            background-color: #eef7ff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .class-item:hover {
+            background-color: #d0e8ff;
+        }
+        .class-item.selected {
+            background-color: #4a90e2;
+            color: white;
+        }
+        .student-list {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4a90e2;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .search {
+            margin-bottom: 20px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .btn {
+            padding: 8px 15px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #3a7bc8;
+        }
+        .status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status-registered {
+            background-color: #4caf50;
+            color: white;
+        }
+        .status-pending {
+            background-color: #ff9800;
+            color: white;
+        }
+        .filter-container {
+            display: flex;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+        .filter-container select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel - Class List -->
+        <div class="panel left-panel">
+            <h1>Classes</h1>
+            <input type="text" class="search" placeholder="Search classes...">
+            
+            <div class="filter-container">
+                <select id="year-filter">
+                    <option value="">All Years</option>
+                    <option value="1">Year 1</option>
+                    <option value="2">Year 2</option>
+                    <option value="3">Year 3</option>
+                    <option value="4">Year 4</option>
+                </select>
+                
+                <select id="department-filter">
+                    <option value="">All Departments</option>
+                    <option value="cs">Computer Science</option>
+                    <option value="eng">Engineering</option>
+                    <option value="math">Mathematics</option>
+                    <option value="phys">Physics</option>
+                </select>
+            </div>
+            
+            <ul class="class-list">
+                <li class="class-item selected" data-year="1" data-dept="cs">
+                    <h3>CS101 - Introduction to Programming</h3>
+                    <p>Year 1 - Computer Science</p>
+                    <p>Students: 32 | Registered for Exams: 28</p>
+                </li>
+                <li class="class-item" data-year="2" data-dept="cs">
+                    <h3>CS201 - Data Structures</h3>
+                    <p>Year 2 - Computer Science</p>
+                    <p>Students: 27 | Registered for Exams: 25</p>
+                </li>
+                <li class="class-item" data-year="1" data-dept="math">
+                    <h3>MATH101 - Calculus I</h3>
+                    <p>Year 1 - Mathematics</p>
+                    <p>Students: 45 | Registered for Exams: 40</p>
+                </li>
+                <li class="class-item" data-year="3" data-dept="eng">
+                    <h3>ENG301 - Circuit Analysis</h3>
+                    <p>Year 3 - Electrical Engineering</p>
+                    <p>Students: 22 | Registered for Exams: 19</p>
+                </li>
+                <li class="class-item" data-year="2" data-dept="phys">
+                    <h3>PHYS201 - Classical Mechanics</h3>
+                    <p>Year 2 - Physics</p>
+                    <p>Students: 18 | Registered for Exams: 16</p>
+                </li>
+                <li class="class-item" data-year="4" data-dept="cs">
+                    <h3>CS401 - Artificial Intelligence</h3>
+                    <p>Year 4 - Computer Science</p>
+                    <p>Students: 15 | Registered for Exams: 12</p>
+                </li>
+                <li class="class-item" data-year="3" data-dept="math">
+                    <h3>MATH301 - Linear Algebra</h3>
+                    <p>Year 3 - Mathematics</p>
+                    <p>Students: 30 | Registered for Exams: 28</p>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Right Panel - Students and Exams -->
+        <div class="panel right-panel">
+            <h1>CS101 - Introduction to Programming</h1>
+            <p><strong>Professor:</strong> Dr. Jane Smith</p>
+            <p><strong>Exam Date:</strong> March 15, 2025</p>
+            
+            <div class="filter-container">
+                <select id="exam-status-filter">
+                    <option value="">All Registration Status</option>
+                    <option value="registered">Registered</option>
+                    <option value="pending">Registration Pending</option>
+                    <option value="exempt">Exempt</option>
+                </select>
+                
+                <input type="text" class="search" placeholder="Search students..." style="flex-grow: 1;">
+            </div>
+            
+            <div class="student-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Exam Subjects</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>S10001</td>
+                            <td>John Doe</td>
+                            <td>Programming Theory, Practical Coding</td>
+                            <td><span class="status status-registered">Registered</span></td>
+                            <td><button class="btn">Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>S10002</td>
+                            <td>Emily Smith</td>
+                            <td>Programming Theory, Practical Coding</td>
+                            <td><span class="status status-registered">Registered</span></td>
+                            <td><button class="btn">Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>S10003</td>
+                            <td>Michael Johnson</td>
+                            <td>Programming Theory only</td>
+                            <td><span class="status status-registered">Registered</span></td>
+                            <td><button class="btn">Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>S10004</td>
+                            <td>Sarah Williams</td>
+                            <td>Programming Theory, Practical Coding</td>
+                            <td><span class="status status-pending">Pending</span></td>
+                            <td><button class="btn">Register</button></td>
+                        </tr>
+                        <tr>
+                            <td>S10005</td>
+                            <td>David Brown</td>
+                            <td>Practical Coding only</td>
+                            <td><span class="status status-registered">Registered</span></td>
+                            <td><button class="btn">Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>S10006</td>
+                            <td>Jennifer Miller</td>
+                            <td>Programming Theory, Practical Coding</td>
+                            <td><span class="status status-pending">Pending</span></td>
+                            <td><button class="btn">Register</button></td>
+                        </tr>
+                        <tr>
+                            <td>S10007</td>
+                            <td>Robert Wilson</td>
+                            <td>Programming Theory, Practical Coding</td>
+                            <td><span class="status status-registered">Registered</span></td>
+                            <td><button class="btn">Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>S10008</td>
+                            <td>Lisa Martinez</td>
+                            <td>-</td>
+                            <td><span class="status" style="background-color: #888; color: white;">Exempt</span></td>
+                            <td><button class="btn" style="background-color: #888;">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <button class="btn" style="background-color: #4caf50;">Register All Pending</button>
+                <button class="btn" style="background-color: #ff9800; margin-left: 10px;">Export List</button>
+                <button class="btn" style="background-color: #2196f3; margin-left: 10px;">Print Report</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple demo interactivity
+        document.querySelectorAll('.class-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove selected class from all items
+                document.querySelectorAll('.class-item').forEach(el => {
+                    el.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked item
+                this.classList.add('selected');
+                
+                // Update right panel title (in a real app, would load data via AJAX)
+                document.querySelector('.right-panel h1').textContent = this.querySelector('h3').textContent;
+            });
+        });
+        
+        // Demo filter functionality
+        document.getElementById('year-filter').addEventListener('change', function() {
+            filterClasses();
+        });
+        
+        document.getElementById('department-filter').addEventListener('change', function() {
+            filterClasses();
+        });
+        
+        function filterClasses() {
+            const yearFilter = document.getElementById('year-filter').value;
+            const deptFilter = document.getElementById('department-filter').value;
+            
+            document.querySelectorAll('.class-item').forEach(item => {
+                const yearMatch = yearFilter === '' || item.dataset.year === yearFilter;
+                const deptMatch = deptFilter === '' || item.dataset.dept === deptFilter;
+                
+                if (yearMatch && deptMatch) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

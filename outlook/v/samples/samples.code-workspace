@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "samples",
+			"path": "."
+		},
+		{
+			"name": "schema",
+			"path": "../../../schema"
+		},
+		{
+			"name": "outlook",
+			"path": "../.."
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script type="module">
+            //
+            //
+            import {} from '';
+            //
+            //Wait for the window to fully load to do the following
+            window.onload = ()=>{
+                //
+                //Get the circle trpresenting the entity
+                const entity = document.getElementById('entity');
+                //
+                //Add the edit functionality on the entity
+                entity.addEventListener('click', edit);
+                //
+                //Show the dialog that will be used for data collecton
+                function edit () {
+                    //
+                    //Get the dialog element from the document
+                    const dlg = document.body.querySelector('dialog');
+                    //
+                    //Open the dialog 
+                    dlg.showModal();
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <svg width="600" height="400" viewBox="0 0 500 100" style="border: 2px solid black">
+            <g>
+                <circle r="20" cx="150" cy="150" fill="lightblue" stroke="none" id="entity"></circle>
+                <text text-anchor="middle" x="150" y="160">intern</text>
+                <g transform="rotate(0,150, 150)">
+                  <polyline class="backbone" marker-mid="url(#tick)" marker-end="url(#tick)" points="150, 130 150, 110 150, 90 150, 70 150, 50 150, 30 150, 10"></polyline>
+                  <g transform="translate(1,0.5)">
+                    <text x="150" y="120">end_date</text>
+                    <text x="150" y="100">image</text>
+                    <text x="150" y="80">initials</text>
+                    <text x="150" y="60">name</text>
+                    <text x="150" y="40">qualification</text>
+                    <text x="150" y="20">start_date</text>
+                    <text x="150" y="0">surname*</text>
+                    <text x="150" y="-20">university</text>
+                    <text x="150" y="-40">user</text>
+                    <text x="150" y="-60">year</text>
+                  </g>
+                </g>
+              </g>stroke="black"
+            </svg>
+        </svg>
+
+        <dialog>
+            <form>
+                <!-- The name of the entity -->
+                <label>
+                    Entity Name: 
+                    <input type="text" id="ename" value="intern"/>
+                </label>
+
+                <!-- The fields -->
+                <div id="fields">
+
+                </div>
+                
+                <!-- The entity indices -->
+            </form>
+        </dialog>
+    </body>
+</html>

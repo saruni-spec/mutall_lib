@@ -1,0 +1,103 @@
+/*
+Use the sans serif font and dark shade of grey*/
+*{
+    font-family: sans-serif;
+    color: rgb(26, 22, 22);
+}
+
+/* Use a margin of 0.8em to all in all input elements*/
+input{
+    margin: 0.8em;
+}
+#register{
+    padding: 5px;
+    color: rgb(0, 0, 180);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    margin-bottom: 20px;
+}
+#register:hover{
+    color: black;
+    text-decoration: underline;
+    transition: 0.5s ease-in-out;
+}
+input[type=password] ,input[type=text], input[type=email] {
+    margin:0.5em 5px;
+    padding: 8px;
+    /* width: 50%; */
+    border-color: blue;
+    border-radius: 4px;
+    background-color: rgba(208, 202, 202, 0.427);
+    transition: 0.3s ease-in-out;
+}
+input[type=password]:focus,input[type=text]:focus, input[type=email]:focus{
+    background-color: transparent;
+    transition: 0.5s ease-in-out;
+}
+
+input[type=submit], button{
+    width: fit-content;
+    padding: 10px;
+    background-color: rgb(74, 71, 71);
+    color: white;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: transparent;
+    cursor: pointer;
+    transition: 0.5s ease-in-out; 
+}
+input[type=submit]:hover, button:hover{
+    background-color: transparent;
+    color: rgb(26, 22, 22);
+    border-color: rgb(26, 22, 22);
+    transition: 0.5s ease-in-out;
+}
+#login_form{
+    display: flex;
+    flex-direction: column;
+}
+fieldset{
+    margin-top: 2em;
+    border-radius: 5px;
+    border-color: blue;
+    border-width: 0.04em;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+label{
+    margin: 10px;
+}
+#registration_form{
+    align-items: start;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+#cancel{
+    margin-left: 10em;
+}
+
+.error{
+    color:red;
+    font-size: 0.9em;
+}
+
+.required{
+    color: red;
+}
+
+/*
+Show the table borders*/
+td{
+    border: 1px solid grey;
+    width:100px;
+    height:50px;
+}

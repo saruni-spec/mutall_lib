@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Draggable SVG Groups</title>
+    </head>
+    <body>
+        <svg id="mySvg" width="400" height="300" viewBox="0 0 400 300">
+            <g transform="translate(50, 50)">
+                <circle cx="0" cy="0" r="20" fill="blue" />
+                <text x="25" y="5" fill="black">Group 1</text>
+            </g>
+        </svg>
+
+        <script>
+            const svg = document.getElementById('mySvg');
+            const groupElements = svg.querySelectorAll('circle');
+
+            groupElements.forEach((group) => {
+                group.addEventListener('mousedown', handleMouseDown);
+            });
+
+            let isDragging = false;
+            let initialX = 0;
+            let initialY = 0;
+
+            function handleMouseDown(event) {
+                isDragging = true;
+                const group = event.target;
+                initialX = event.clientX - group.getBoundingClientRect().left;
+                initialY = event.clientY - group.getBoundingClientRect().top;
+
+                group.addEventListener('mousemove', handleMouseMove);
+                group.addEventListener('mouseup', handleMouseUp);
+                group.addEventListener('mouseleave', handleMouseUp);
+            }
+
+            function handleMouseMove(event) {
+                if (isDragging) {
+                    const group = event.target;
+                    const newX = event.clientX - initialX;
+                    const newY = event.clientY - initialY;
+
+                    //group.setAttribute('transform', `translate(${newX}, ${newY})`);
+                    group.setAttribute('cx', `${newX}`);
+                    group.setAttribute('cy', `${newY}`);
+                }
+            }
+
+            function handleMouseUp() {
+                isDragging = false;
+            }
+        </script>
+    </body>
+</html>

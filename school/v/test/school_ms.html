@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Ms</title>
+
+    <!-- 
+    Styling the webpage using the grid -->
+    <link rel="stylesheet" href="grid.css">
+
+    <!-- 
+    Styling the tabulations using the zone css -->
+    <link rel="stylesheet" href="../../../outlook/v/zone/zone.css">
+    <!-- 
+    The script  -->
+
+    <script type="module">
+      //
+      //Getting the school management system 'school_ms' class from school_ms.js module.
+      import {school_page} from "./school_ms.js";
+      import {resizer} from "../../../resizer/v/code/resize.js"
+
+        //
+        //After the page `loads execute this.
+        window.onload=async()=> {
+          //
+          //Create an object of the new school management class.
+          const my_schoolms= new school_page();
+          //￼
+          //Showing the tabulation for new school management system
+          // how the show method should appear on the ts file??
+          await my_schoolms.show();
+          //
+          
+          const container=document.querySelector('.container');
+          //
+          new resizer(container);
+        };
+    </script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div id="school_panel">
+        <!-- <label for="school">School in the database</label> -->
+        <!-- <span>schools in the database.</span> -->
+    </div>
+    <div id="class_">
+        <!-- <label for="class_">Classes in the selected school</label> -->
+        <!-- <span>classes in the selected school.</span> -->
+    </div>
+    <div id="stream">
+        <!-- <label for="stream">Streams in the selected class</label> -->
+        <!-- <span>streams in the selected class.</span> -->
+    </div>
+    <div id="year">
+        <!-- <label for="year">Year in a specific academic year</label> -->
+        <!-- <span>This section indicates the academic year .</span> -->
+    </div>
+    <div id="student">
+        <!-- <label for="student">Students details </label> -->
+        <!-- <span>This section lists student information.</span> -->
+    </div>
+</div>
+
+
+</body>
+</html>
+
+<!-- adding labels on the various panel 
+
+  above task is working but its appearing below the panels tehn disappears could it be a styling issue 
+    positioning of the html code ??? -->
+  

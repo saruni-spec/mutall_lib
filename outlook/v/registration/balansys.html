@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>balansys</title>
+        <link href="registration.css" rel="stylesheet">
+
+        <script type="module">
+            //
+            //Access the module that handles balansys
+            import {balansys} from "./balansys.js"
+            //
+            //Create an instance of balansys
+            const Balansys = new balansys();
+            //
+            //Make the instance available
+            window.Balansys = Balansys;
+            //
+            //Immediately the page has loaded show log in message 
+            window.onload = () => Balansys.show_panels();
+        </script>
+    </head>
+    <body>
+        <p id="invitation"></p>
+
+        <p id="welcome" hidden>
+            Welcome <span id="user_name" style="color:green;"></span>.
+            Please <span style="color: blue;" onclick="Balansys.logout()">log out</span> when you are done
+        </p>
+    </body>
+</html>

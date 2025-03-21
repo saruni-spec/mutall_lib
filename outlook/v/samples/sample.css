@@ -1,0 +1,70 @@
+/*
+Show the table borders*/
+td{
+    /*
+    Show a faint border for cells*/
+    border: 1px solid rgba(0,0,0,0.1);
+    /*
+    Allow spaces even for empty cells */
+    width:100px;
+    height:50px;
+}
+
+
+table{
+    /*
+    Collapse the outside borders of a table that are double lines*/
+    border-collapse: collapse;
+    /*
+    Allow small tables to be display next to each other*/
+    display:inline;
+}
+
+/*
+Mark selectd td and tr with different color. Consider animation*/
+td.selected {
+    background-color: lightblue;
+}
+tr.selected{
+    background-color:lightgoldenrodyellow;
+}
+
+/*
+Control the edit and normal views on selection*/
+
+/*
+Hide all the edit marked elements under a td that is not  selected*/
+td:not(.selected) .edit{
+    background-color:yellow;
+    display:none;
+}
+
+/*
+Show errorneous cases in red text*/
+.error{
+    color:red;
+}
+
+/*
+Tabulator markers for debugging purposes. NB. A border is never visible until
+3 components are defined: color, width and style*/
+ 
+/*
+Demarcating the extent of a homozone*/
+td.left{border-left:2px solid green;}
+td.right{border-right:2px solid green;}
+td.top{border-top:2px solid green;}
+td.bottom{border-bottom:2px solid green;}
+
+/*
+To show a row axis by highlighting the left and top boundaris*/
+td.axis.left{border-left:red 2px dashed}
+td.axis.top{border-top:red 2px dashed;}
+/*
+Show reference cells with a red background*/
+td.ref{background-color: red;}
+
+/*
+Marking a homozone. To remove a the mark on a homozone is to remove the mozone
+class*/
+td.homozone{background-color:red;}

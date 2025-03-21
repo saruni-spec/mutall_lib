@@ -1,0 +1,129 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 10% 90%;
+    grid-template-areas: 'header' 'content';
+}
+
+#header {
+    grid-area: header;
+    background-color: aqua;
+}
+
+#content {
+    grid-area: content;
+}
+
+/*
+The dabase occupies all the content area*/
+svg {
+    height: 100%;
+}
+
+/*
+Styling for all svg texts, e.g., entity names, attribute labels etc*/
+text {
+    font-size: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    stroke: black;
+    stroke-width: 0.1px;
+}
+
+/*
+The color for all normal entities*/
+circle {
+    fill: lightblue;
+}
+
+/*
+The red color for erroneous entities and text*/
+.error circle {
+    fill: #f7a886;
+}
+.error text {
+    text: white;
+    -webkit-text-stroke-color: white;
+}
+
+/*
+The color of a selected*/
+.selected circle {
+    fill: rgb(189, 135, 222);
+}
+
+/*
+Mandatory vs optional*/
+.mandatory {
+    fill: #fc08e8;
+    stroke-width: 0;
+    stroke: currentColor;
+}
+
+/*
+The attribute's' backbone
+*/
+.backbone {
+    stroke: black;
+    stroke-width: 0.1;
+}
+
+/*
+The markers for the attributes backbone. THIS IS NOT WORKING*/
+
+marker {
+    stroke: rgb(0, 0, 0);
+    stroke-width: 2;
+}
+
+.relation polyline {
+    stroke: black;
+    stroke-width: 0.2;
+}
+
+/* Hide and unhide content in the page */
+.hidden {
+    display: none;
+}
+
+/* Change the font color of all the comments and datatypes */
+.comment,
+.data_type {
+    fill: rgb(79, 252, 5);
+    stroke-width: 0;
+    stroke: currentColor;
+}
+
+/* 
+Adjust the sizing,color and positioning of the entities side pannel 
+Also make the side pannel hidden 
+*/
+#entities {
+    width: 250px;
+    height: 89%;
+    background-color: lightgray;
+    overflow: scroll;
+    position: fixed;
+    right: -250px; /* Initially hide it off the screen */
+    bottom: 0;
+    transition: right 0.5s ease; /* Smooth transition for sliding effect */
+}
+
+/* Show the side pannel contating the list of entities */
+#entities.show {
+    right: 0; /* Move the panel in when shown */
+}
+
+/* Make the entitites checkbox display only one at a time */
+.entity_checkbox {
+    display: block;
+}
+
+/* Mark all enforced relationships pink  */
+.enforced > polyline,
+.enforced > marker {
+    stroke: #fc08e8;
+}

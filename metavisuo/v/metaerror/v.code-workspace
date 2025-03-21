@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../schema"
+		},
+		{
+			"path": "../../../outlook"
+		}
+	],
+	"settings": {}
+}

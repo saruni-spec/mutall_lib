@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../samples"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../schema"
+		}
+	],
+	"settings": {}
+}
